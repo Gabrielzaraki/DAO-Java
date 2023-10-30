@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.dao.impl.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -26,10 +27,22 @@ public class Program {
 		list = sellerDao.findAll();
 		list.forEach(System.out::println);
 		
-		System.out.println("\n===== TESTE 4 Insert =====");
+		/*System.out.println("\n===== TESTE 4 Insert =====");
 		Seller newSeller = new Seller(null, "Greg", "greg@gregmail.com", new Date(), 4000.0, department);
 		sellerDao.insert(newSeller);
-		System.out.println("Inserted! New id = " + newSeller.getId());
+		System.out.println("Inserted! New id = " + newSeller.getId());*/
+		
+		System.out.println("\n===== TESTE 5 SellerUpdate =====");
+		seller = sellerDao.findById(1);
+		seller.setName("Manitada Jhonsons");
+		sellerDao.update(seller);
+		System.out.println("Update Complete!");
+		
+		System.out.println("\n===== TESTE 6 DeleteByID =====");
+		sellerDao.deleteById(1);
+		System.out.println("Delete Complete!");
+		
+		
 		
 	}
 
